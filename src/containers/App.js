@@ -17,25 +17,28 @@ class App extends Component {
   componentDidMount() {
     fetch('https://cm-home-assignment.herokuapp.com/chapters.json')
       .then(response=> response.json())
-      .then(chapters => {this.setState({ chapters: chapters})});
+      .then(chapters => {this.setState({ chapters: this.sortByPosition(chapters)})})
+      .catch(err => console.log(err));
   }
 
-  onButtonClick = (id, locked) => {
-    if (!locked) {
-      fetch(`https://cm-home-assignment.herokuapp.com/chapters/${id}/challenges.json`)
-        .then(response=> response.json())
-        .then(challenges => {this.setState({ challenges: challenges})});
-    }
+  sortByPosition = (array) => {
+    return array.sort((a, b) => (a.position > b.position) ? 1 : -1)
+  }
+
+  onButtonClick = (id) => {
+    fetch(`https://cm-home-assignment.herokuapp.com/chapters/${id}/challenges.json`)
+      .then(response=> response.json())
+      .then(challenges => {this.setState({ challenges: this.sortByPosition(challenges)})})
+      .catch(err => console.log(err));
+
   }
 
   render() {
     const { chapters, challenges } = this.state;
-    const sortedChapters   = chapters.sort((a, b) => (a.position > b.position) ? 1 : -1)
-    const sortedChallenges = challenges.sort((a, b) => (a.position > b.position) ? 1 : -1)
     return (
         <div> 
-          <ChaptersList chapters={sortedChapters} onButtonClick={this.onButtonClick}/>
-          {challenges.length ?  <ChallengesList challenges={sortedChallenges} />: <div></div>}
+          <ChaptersList chapters={chapters} onButtonClick={this.onButtonClick}/>
+          {challenges.length>0 && <ChallengesList challenges={challenges} />}
         </div>
       );
   }
