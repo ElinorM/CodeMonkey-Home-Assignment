@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br>
 
-it contains 4 components:
+It contains 4 components:
 - ChaptersList - Calling Chapter component
 - Chapter - Showing a button for each chapter
 - ChallengesList - Calling Challenge component according to the Chapter button click
