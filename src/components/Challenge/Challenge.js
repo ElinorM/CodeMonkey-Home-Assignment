@@ -18,8 +18,8 @@ const Challenge = ({ position, stars }) => {
         {
         	starsArray.map((star, i) => {
           		return (
-            		<div>
-              			<img alt= '' src ={`${starsArray[i]}`} />
+            		<div key={`img_${position}_${i}`}>
+              			<img alt= '' src ={`${starsArray[i]}`}/>
             		</div>
           		);
         	})

@@ -20,19 +20,18 @@ class App extends Component {
       .then(chapters => {this.setState({ chapters: chapters})});
   }
 
-  addChallenges = (challenges) => {
+  addChallenges = (challenges, id) => {
     this.setState({challenges: challenges});
   }
 
   render() {
-    const { chapters, challenges } = this.state;
+    const { chapters, challenges, chapter_id } = this.state;
     const sortedChapters   = chapters.sort((a, b) => (a.position > b.position) ? 1 : -1)
     const sortedChallenges = challenges.sort((a, b) => (a.position > b.position) ? 1 : -1)
     return (
-        <div className='tc'>
-          <h1 className='f1'>Chapters</h1>
+        <div> 
           <ChaptersList chapters={sortedChapters} addChallenges={this.addChallenges}/>
-          {challenges.length ?  <ChallengesList challenges={sortedChallenges}/>: <div></div>}
+          {challenges.length ?  <ChallengesList challenges={sortedChallenges} chapter_id={chapter_id}/>: <div></div>}
         </div>
       );
   }
