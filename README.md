@@ -6,7 +6,7 @@ It contains 4 components:
 - ChaptersList - List Component to display a list of chapters
 - Chapter - Button element for each chapter
 - ChallengesList - List Component to display a list of challenges according to Chapter button click.
-- Challenge - Challenge position and stars array acoording to the number of stars the user has earned for this challenge  
+- Challenge - Challenge component inculdes challenge position and stars array acoording to the number of stars the user has earned for this challenge  
 
 ### Available Scripts
 
