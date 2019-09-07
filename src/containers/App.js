@@ -10,7 +10,7 @@ class App extends Component {
     super()
     this.state = {
       chapters: [],
-      challenges:[]
+      challenges:[],
     }
   }
 
@@ -20,18 +20,22 @@ class App extends Component {
       .then(chapters => {this.setState({ chapters: chapters})});
   }
 
-  addChallenges = (challenges, id) => {
-    this.setState({challenges: challenges});
+  onButtonClick = (id, locked) => {
+    if (!locked) {
+      fetch(`https://cm-home-assignment.herokuapp.com/chapters/${id}/challenges.json`)
+        .then(response=> response.json())
+        .then(challenges => {this.setState({ challenges: challenges})});
+    }
   }
 
   render() {
-    const { chapters, challenges, chapter_id } = this.state;
+    const { chapters, challenges } = this.state;
     const sortedChapters   = chapters.sort((a, b) => (a.position > b.position) ? 1 : -1)
     const sortedChallenges = challenges.sort((a, b) => (a.position > b.position) ? 1 : -1)
     return (
         <div> 
-          <ChaptersList chapters={sortedChapters} addChallenges={this.addChallenges}/>
-          {challenges.length ?  <ChallengesList challenges={sortedChallenges} chapter_id={chapter_id}/>: <div></div>}
+          <ChaptersList chapters={sortedChapters} onButtonClick={this.onButtonClick}/>
+          {challenges.length ?  <ChallengesList challenges={sortedChallenges} />: <div></div>}
         </div>
       );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Chapter from '../Chapter/Chapter';
 
-const ChaptersList = ({ chapters , addChallenges}) => {
+const ChaptersList = ({ chapters , onButtonClick}) => {
   
   return (
     <div>
@@ -15,7 +15,7 @@ const ChaptersList = ({ chapters , addChallenges}) => {
                   name={chapter.name}
                   locked={chapter.locked}
                   id={chapter.id}
-                  addChallenges = {addChallenges}
+                  onButtonClick = {onButtonClick}
                 />
               </li>
             );

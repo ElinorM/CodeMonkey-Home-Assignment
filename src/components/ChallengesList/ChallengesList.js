@@ -4,7 +4,7 @@ import Challenge from '../Challenge/Challenge';
 const ChallengesList = ({ challenges }) => {
   return (
     <div>
-      <h2>Challenges</h2>
+      <h1>Challenges</h1>
       <ul>
         {
           challenges.map((challenge, i) => {
