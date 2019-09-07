@@ -3,10 +3,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br>
 
 It contains 4 components:
-- ChaptersList - Calling Chapter component
-- Chapter - Showing a button for each chapter
-- ChallengesList - Calling Challenge component according to the Chapter button click
-- Challenge - Showing challeng position and the correct stars array acoording to the number of stars the user has earned for this challenge  
+- ChaptersList - List Component to display a list of chapters
+- Chapter - Button element for each chapter
+- ChallengesList - List Component to display a list of challenges according to Chapter button click.
+- Challenge - Challenge position and stars array acoording to the number of stars the user has earned for this challenge  
 
 ### Available Scripts
 
